@@ -1,38 +1,54 @@
+const apiKey = "731a8f7ec2453dced0eb2b547f268251";
 
-const API_KEY = "731a8f7ec2453dced0eb2b547f268251";
+const main = document.getElementById('main');
+const form = document.getElementById('form');
+const search = document.getElementById('search');
+  
+const url = (city)=> `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
 
-// Function to retrieve weather data from Open Weather Map API
-function getWeather(city) {
-  // Fetch weather data from Open Weather Map API
-  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`)
-    .then(response => response.json())
-    .then(data => {
-      // Update the UI with the retrieved weather data
-      document.getElementById("temperature").innerHTML = data.main.temp;
-      document.getElementById("weather").innerHTML = data.weather[0].main;
-      // ...
-    })
-    .catch(error => {
-      // Handle any errors
-      console.error(error);
-    });
-}
 
-// When the page loads, get the weather for the default location (New York)
-getWeather("Bern");
+async function getWeatherByLocation(city){
+     
+         const resp = await fetch(url(city), {
+             origin: "cros" });
+         const respData = await resp.json();
+     
+           addWeatherToPage(respData);
+          
+     }
 
-// Add event listeners for location input and refresh button
-document.getElementById("location-form").addEventListener("submit", event => {
-  event.preventDefault(); // prevent form submission
-  // Get the location from the input field
-  const city = document.getElementById("location-input").value;
-  // Get the weather for the specified location
-  getWeather(city);
-});
+      function addWeatherToPage(data){
+          const temp = Ktoc(data.main.temp);
 
-document.getElementById("refresh-button").addEventListener("click", () => {
-  // Get the current location from the UI
-  const city = document.getElementById("location").innerHTML;
-  // Get the weather for the specified location
-  getWeather(city);
-});
+          const weather = document.createElement('div')
+          weather.classList.add('weather');
+
+          weather.innerHTML = `
+          <h2><img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" /> ${temp}°C <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" /></h2>
+          <small>${data.weather[0].main}</small>
+          
+          `;
+
+
+        //   cleanup 
+          main.innerHTML= "";
+           main.appendChild(weather);
+      };
+
+
+     function Ktoc(K){
+         return Math.floor(K - 273.15);
+     }
+
+
+
+     form.addEventListener('submit',(e) =>{
+        e.preventDefault();
+
+        const city = search.value;
+
+        if(city){
+            getWeatherByLocation(city)
+        }
+
+     });
