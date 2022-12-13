@@ -79,7 +79,7 @@ body {
   display: flex;
   align-items: center;
   color: antiquewhite;
-} /* .weather img{ transform: scale(2); } */
+}
 
 footer {
     background-color: #222;
