@@ -34,7 +34,7 @@ body {
   color: #fff;
 }
 .input-search::placeholder {
-  color: rgba(251, 71, 71, 0.883);
+  color: rgba(55, 184, 248, 0.883);
   font-size: 18px;
   letter-spacing: 2px;
   font-weight: 100;
