@@ -11,7 +11,7 @@ body {
   align-items: center;
   min-height: 100vh;
   flex-direction: column;
-  background-color: rgb(57, 57, 57);
+  background-color: rgb(38, 38, 38);
 }
 
 .search-box {
@@ -34,7 +34,7 @@ body {
   color: #fff;
 }
 .input-search::placeholder {
-  color: rgba(71, 251, 110, 0.883);
+  color: rgba(251, 71, 71, 0.883);
   font-size: 18px;
   letter-spacing: 2px;
   font-weight: 100;
