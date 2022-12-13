@@ -1,27 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WeatherAPI</title>
+    <link rel="stylesheet" href="styles/stylesheet.css" />
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather</title>
-    <link rel="stylesheet" href="styles/stylesheet.css">
-</head>
-
-<body>
-    <div class="box" action="" class="search-bar" id="form">
-        <form name="search">
-            <input type="text" class="input" name="txt" onmouseout="this.value = ''; this.blur();" placeholder=" Loaction" autocomplete="off" id="search">
+  <body>
+        <div class="search-box">
+        <form id="form">
+        <button class="btn-search"><i class="fas fa-search"></i></button>
+        <input type="text" class="input-search" placeholder="Type to Search..." id="search" autocomplete="off">
         </form>
-        <i class="fas fa-search"></i>
-    
-    </div>
+      </div>
     <main id="main">
-
     </main>
-    
-    <script src="app.js"></script>
-</body>
 
+    <footer>
+        <p>
+              Created with by<a target="_blank" href="https://github.com/KingsOfPrince"> KingsOfPrince</a>
+      </footer>
+
+    <div>
+        <div id="particles-js"></div>
+        <script src="particles/particles.js"></script>
+        <script src="particles/app.js"></script>
+    </div>
+    <script src="app.js"></script>
+  </body>
 </html>
